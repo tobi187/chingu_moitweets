@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mochitweet/pages/inital_screen.dart';
-import 'package:mochitweet/pages/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,9 +15,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("MoiTweets"),
         ),
-        body: const MainScreen(
-          username: "toni",
-        ),
+        body: const InitialScreen(),
       ),
     );
   }

@@ -39,14 +39,14 @@ class _MainScreenState extends State<MainScreen> {
                 border: Border.all(),
                 color: Colors.red,
               ),
-              child: const JsonDisplay(),
+              child: JsonDisplay(),
             ),
           ),
           Align(
             alignment: Alignment.center,
             child: Container(
               width: constraints.maxWidth * 0.6,
-              height: screenSize.height * 0.3,
+              height: screenSize.height * 0.2,
               color: Colors.blue,
               child: const ActionMenu(),
             ),
