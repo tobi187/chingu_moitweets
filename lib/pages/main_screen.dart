@@ -33,13 +33,13 @@ class _MainScreenState extends State<MainScreen> {
           Align(
             alignment: Alignment.center,
             child: Container(
-              height: screenSize.height * 0.3,
+              height: screenSize.height * 0.5,
               width: constraints.maxWidth * 0.6,
               decoration: BoxDecoration(
                 border: Border.all(),
                 color: Colors.red,
               ),
-              child: JsonDisplay(),
+              child: JsonDisplay(userName: widget.username),
             ),
           ),
           Align(

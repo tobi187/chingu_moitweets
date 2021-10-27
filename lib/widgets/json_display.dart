@@ -62,7 +62,7 @@ class _JsonDisplayState extends State<JsonDisplay> {
               child: jsonData == ""
                   ? const Center(child: CircularProgressIndicator())
                   : SingleChildScrollView(
-                      child: Text(
+                      child: SelectableText(
                         jsonData,
                       ),
                     ),

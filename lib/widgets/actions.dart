@@ -1,4 +1,3 @@
-import 'package:file_picker/_internal/file_picker_web.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,7 @@ class ActionMenu extends StatefulWidget {
 }
 
 class _ActionMenuState extends State<ActionMenu> {
-  String fileName = "no file chosen";
+  String? fileName = "no file chosen";
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +19,16 @@ class _ActionMenuState extends State<ActionMenu> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: "FileName",
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
+            child: Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "FileName",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                ),
+                onChanged: (String value) {},
               ),
-              onChanged: (String value) {},
             ),
           ),
           Expanded(
@@ -50,16 +52,17 @@ class _ActionMenuState extends State<ActionMenu> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(fileName),
+                Text(fileName == null ? "no file chosen" : fileName!),
                 ElevatedButton(
                   onPressed: () async {
-                    FilePickerResult? _filename =
-                        await FilePickerWeb.platform.pickFiles();
-                    if (_filename != null) {
-                      setState(() {
-                        fileName = _filename.files.single.path!;
-                      });
-                    }
+                    FilePickerResult? result = await FilePicker.platform
+                        .pickFiles(
+                            allowedExtensions: ["json"],
+                            type: FileType.custom,
+                            allowMultiple: false);
+                    //File file = File(result!.files.single.path!);
+                    fileName = result!.files.first.name;
+                    setState(() {});
                   },
                   child: const Text("Choose File"),
                 )
